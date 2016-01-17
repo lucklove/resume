@@ -1,0 +1,151 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+% !Mode:: "TeX:UTF-8"
+
+\documentclass{resume}
+\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+\usepackage{cite}
+\usepackage{multicol}
+
+\setlength{\columnsep}{25pt} %设置左右栏间距
+
+\begin{document}
+\pagenumbering{gobble} % suppress displaying page number
+
+\name{周帅}
+
+% {E-mail}{mobilephone}{homepage}
+% be careful of _ in emaill address
+\contactInfo{gnu.crazier@gmail.com}{(+86) 18202415073}{1041324091}
+% {E-mail}{mobilephone}
+% keep the last empty braces!
+%\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
+
+\begin{multicols}{2} %双栏开始
+
+\section{\faSearch 目标职位}
+\textit{C++工程师}
+
+\section{\faGraduationCap 教育背景}
+\datedsubsection{\textbf{东北大学}, 沈阳}{2013 -- 至今}
+\textit{本科在读} 软件工程
+
+\section{\faStar 创业/项目经历}
+\datedsubsection{\textbf{智从科技有限公司} 沈阳}{2014年5月 -- 至今}
+\role{创业}{创始人: 王艺博}
+\begin{onehalfspacing}
+轻反馈(iFeedback)
+\newline
+http://www.qingfankui.com/
+\begin{itemize}
+  \item 1.x: 轻反馈PC端安装包制作(安装, 升级, 卸载)
+  \item 2.x: 学生偏科度分析算法实现
+  \item 3.x:
+  \begin{itemize} 
+    \item 题目的模糊搜索算法设计与实现 
+    \item 基于Angular.js实现部分页面逻辑
+  \end{itemize}
+\end{itemize}
+\end{onehalfspacing}
+
+\datedsubsection{\textsc{Cinatra}}{}
+\role{C++, header only}{社区开源项目, 和江南还有往事如风等合作开发}
+\begin{onehalfspacing}
+一套header only的web框架 
+\newline
+https://github.com/topcpporg/cinatra
+\begin{itemize}
+  \item 完成了单元测试框架的开发
+  \item 在开发过程中通过测试工具对框架性能进行评估与反馈
+\end{itemize}
+\end{onehalfspacing}
+
+\datedsubsection{\textsc{ahttpd}}{}
+\role{C++, asio}{个人开源项目}
+\begin{onehalfspacing}
+一套异步的网络框架
+\newline
+https://github.com/lucklove/ahttpd
+\begin{itemize}
+  \item 实现了一个侵入式的http server框架
+  \item 实现了http client
+  \item 实现了smtp client, 可用于发送邮件
+  \item 实现了fastcgi client, 可以将请求转发给php-fpm
+\end{itemize}
+\end{onehalfspacing}
+
+\datedsubsection{\textsc{PM-Game-Server}}{}
+\role{C++, lua}{商业开源项目, 和Eric合作开发}
+\begin{onehalfspacing}
+微信游戏"口袋妖怪"服务端
+\newline
+https://github.com/lucklove/PM-Game-Server
+\begin{itemize}
+  \item 采用了mysql作永久储存, redis作缓存
+  \item 游戏逻辑全部用lua实现
+\end{itemize}
+\end{onehalfspacing}
+
+\datedsubsection{\textsc{nua}}{}
+\role{C++, header only}{商业开源项目}
+\begin{onehalfspacing}
+PM-Game-Server的lua交互库
+\newline
+https://github.com/lucklove/nua
+\begin{itemize}
+  \item 采用非侵入式接口实现C++类到lua的映射
+  \item 实现了lua向C++返回多值
+  \item 支持lua代码中使用C++的多态
+\end{itemize}
+\end{onehalfspacing}
+
+
+% Reference Test
+%\datedsubsection{\textbf{Paper Title\cite{zaharia2012resilient}}}{May. 2015}
+%An xxx optimized for xxx\cite{verma2015large}
+%\begin{itemize}
+%  \item main contribution
+%\end{itemize}
+
+\section{\faCogs\ IT 技能}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item 编程语言: C++ == C > lua > Java > Python
+  \item 平台: Linux
+  \item 数据库: mysql, redis, memcached
+  \item 虚拟化: docker, vagrant
+  \item 版本控制: git, svn
+  \item 编辑器: vim
+  \item 编译器: gcc(g++), clang(clang++)
+  \item 调试器: gdb, valgrind
+\end{itemize}
+
+\section{\faHeartO 获奖情况}
+\datedline{\textit{二等奖}, 美国大学生数学建模竞赛}{2015 年2 月}
+\datedline{\textit{二等奖}, 全国大学生信息安全竞赛}{2015 年8 月}
+\datedline{\textit{一等奖}, 全国大学生信息安全竞赛}{2015 年8 月}
+
+\section{\faUsers 活动经历}
+\datedsubsection{\textbf{hackshanghai} top9}{2015 年11月}
+hackshanghai是中国最大的大学生hackthon. 
+2015年11月7日, 我和两位同伴经过24小时奋战, 
+完成了一个mooc笔记插件
+(https://github.com/ele828/mooc-mate),
+我负责用cinatra进行服务端开发. 
+
+\section{\faInfo 其他}
+% increase linespacing [parsep=0.5ex]
+\begin{itemize}[parsep=0.5ex]
+  \item GitHub: https://github.com/lucklove
+  \item 语言: 英语 - 熟练(CET6)
+\end{itemize}
+
+\end{multicols} %双栏结束
+
+%% Reference
+%\newpage
+%\bibliographystyle{IEEETran}
+%\bibliography{mycite}
+\end{document}
