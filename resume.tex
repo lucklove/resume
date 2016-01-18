@@ -8,6 +8,7 @@
 \usepackage{linespacing_fix} % disable extra space before next section
 \usepackage{cite}
 \usepackage{multicol}
+\usepackage{ulem}
 
 \setlength{\columnsep}{25pt} %设置左右栏间距
 
@@ -25,8 +26,12 @@
 
 \begin{multicols}{2} %双栏开始
 
-\section{\faSearch 目标职位}
-\textit{C++工程师}
+\section{\faUser 个人介绍}
+习性宅而不萌.
+\newline
+喜欢底层架构, 热爱高性能计算, 乐于压榨计算机, 知识储备偏向于后端与基础架构.
+\newline
+除计算机技术及相关外还喜涉猎社会百科.
 
 \section{\faGraduationCap 教育背景}
 \datedsubsection{\textbf{东北大学}, 沈阳}{2013 -- 至今}
@@ -57,7 +62,12 @@ http://www.qingfankui.com/
 \newline
 https://github.com/topcpporg/cinatra
 \begin{itemize}
-  \item 完成了单元测试框架的开发
+  \item 完成了mini单元测试框架的开发, 以之替代boost.test
+  \begin{itemize}
+    \item 避免boost.test臃肿的问题: 只有一个头文件, 不足200行
+    \item 避免boost.test在BOOST\_REQUIRE中使用异常终止case导致的不良问题: 若BOOST\_REQUIRE抛出的异常被用户代码捕获, 则case不会终止而会继续执行, 这在相当大测程度上会导致整个测试被系统终止(比如访问无效内存)
+    \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码
+  \end{itemize}
   \item 在开发过程中通过测试工具对框架性能进行评估与反馈
 \end{itemize}
 \end{onehalfspacing}
@@ -65,14 +75,13 @@ https://github.com/topcpporg/cinatra
 \datedsubsection{\textsc{ahttpd}}{}
 \role{C++, asio}{个人开源项目}
 \begin{onehalfspacing}
-一套异步的网络框架
+基于boost.asio实现的一套异步的网络框架
 \newline
 https://github.com/lucklove/ahttpd
 \begin{itemize}
-  \item 实现了一个侵入式的http server框架
-  \item 实现了http client
-  \item 实现了smtp client, 可用于发送邮件
-  \item 实现了fastcgi client, 可以将请求转发给php-fpm
+  \item 实现了http server, http client, smtp client, fastcgi client
+  \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免代码中出现同步的代码
+  \item 实现了一个线程池, 防止在必须存在同步代码时占用io\_service的线程从而导致服务器卡死, 以经可能达到高效
 \end{itemize}
 \end{onehalfspacing}
 
@@ -83,21 +92,20 @@ https://github.com/lucklove/ahttpd
 \newline
 https://github.com/lucklove/PM-Game-Server
 \begin{itemize}
-  \item 采用了mysql作永久储存, redis作缓存
-  \item 游戏逻辑全部用lua实现
+  \item 采用了mysql作永久储存, redis作缓存, 并实现了一个lock-free的数据库连接池, 提高运行时效率.
+  \item 采用lua实现游戏的逻辑, 增强扩展性.
 \end{itemize}
 \end{onehalfspacing}
 
 \datedsubsection{\textsc{nua}}{}
 \role{C++, header only}{商业开源项目}
 \begin{onehalfspacing}
-PM-Game-Server的lua交互库
+PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
 \newline
 https://github.com/lucklove/nua
 \begin{itemize}
-  \item 采用非侵入式接口实现C++类到lua的映射
-  \item 实现了lua向C++返回多值
-  \item 支持lua代码中使用C++的多态
+  \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型至lua无法正确识别的bug.
+  \item 扩展了用户类型的接口, 允许用户自由选择传入value, reference, 还是const reference, 而不是限制用户只能使用lvalue的用户类型, 从而更好的支持了在lua中使用C++的多态(用户可以自主选择const和非const版本).
 \end{itemize}
 \end{onehalfspacing}
 
@@ -112,14 +120,10 @@ https://github.com/lucklove/nua
 \section{\faCogs\ IT 技能}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.5ex]
-  \item 编程语言: C++ == C > lua > Java > Python
-  \item 平台: Linux
-  \item 数据库: mysql, redis, memcached
-  \item 虚拟化: docker, vagrant
-  \item 版本控制: git, svn
-  \item 编辑器: vim
-  \item 编译器: gcc(g++), clang(clang++)
-  \item 调试器: gdb, valgrind
+  \item C++(熟练, since 2012)
+  \item C(熟练, since 2011)
+  \item Linux(熟练, since 2011)
+  \item 异步编程, 无锁编程
 \end{itemize}
 
 \section{\faHeartO 获奖情况}
