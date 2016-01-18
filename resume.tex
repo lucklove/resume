@@ -52,7 +52,21 @@ http://www.qingfankui.com/
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{Cinatra}}{时间待确定}
+\datedsubsection{\textsc{ahttpd}}{2015年3月 -- 2015年7月}
+\role{C++, asio}{个人开源项目}
+\begin{onehalfspacing}
+基于boost.asio实现的一套异步的网络框架
+\newline
+https://github.com/lucklove/ahttpd
+\begin{itemize}
+  \item 实现了http server, http client, smtp client, fastcgi client
+  \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免代码中出现同步的代码
+  \item 实现了一个线程池, 防止在必须存在同步代码时占用io\_service的线程从而导致服务器卡死, 以尽可能达到高效
+\end{itemize}
+\end{onehalfspacing}
+
+
+\datedsubsection{\textsc{Cinatra}}{2015年6月 -- 至今}
 \role{C++, header only}{社区开源项目, 和江南还有往事如风等合作开发}
 \begin{onehalfspacing}
 一套header only的web框架 
@@ -69,20 +83,7 @@ https://github.com/topcpporg/cinatra
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{ahttpd}}{时间待确定}
-\role{C++, asio}{个人开源项目}
-\begin{onehalfspacing}
-基于boost.asio实现的一套异步的网络框架
-\newline
-https://github.com/lucklove/ahttpd
-\begin{itemize}
-  \item 实现了http server, http client, smtp client, fastcgi client
-  \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免代码中出现同步的代码
-  \item 实现了一个线程池, 防止在必须存在同步代码时占用io\_service的线程从而导致服务器卡死, 以尽可能达到高效
-\end{itemize}
-\end{onehalfspacing}
-
-\datedsubsection{\textsc{PM-Game-Server}}{时间待确定}
+\datedsubsection{\textsc{PM-Game-Server}}{2015年11月 -- 至今}
 \role{C++, lua}{商业开源项目, 和Eric合作开发}
 \begin{onehalfspacing}
 微信游戏"口袋妖怪"服务端
@@ -94,7 +95,7 @@ https://github.com/lucklove/PM-Game-Server
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{nua}}{时间待确定}
+\datedsubsection{\textsc{nua}}{2015年12月}
 \role{C++, header only}{商业开源项目}
 \begin{onehalfspacing}
 PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
