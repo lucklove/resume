@@ -7,7 +7,6 @@
 %\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
 \usepackage{linespacing_fix} % disable extra space before next section
 \usepackage{cite}
-\usepackage{multicol}
 \usepackage{ulem}
 
 \setlength{\columnsep}{25pt} %设置左右栏间距
@@ -23,8 +22,6 @@
 % {E-mail}{mobilephone}
 % keep the last empty braces!
 %\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
-
-\begin{multicols}{2} %双栏开始
 
 \section{\faUser 个人介绍}
 习性宅而不萌.
@@ -55,7 +52,7 @@ http://www.qingfankui.com/
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{Cinatra}}{}
+\datedsubsection{\textsc{Cinatra}}{时间待确定}
 \role{C++, header only}{社区开源项目, 和江南还有往事如风等合作开发}
 \begin{onehalfspacing}
 一套header only的web框架 
@@ -65,14 +62,14 @@ https://github.com/topcpporg/cinatra
   \item 完成了mini单元测试框架的开发, 以之替代boost.test
   \begin{itemize}
     \item 避免boost.test臃肿的问题: 只有一个头文件, 不足200行
-    \item 避免boost.test在BOOST\_REQUIRE中使用异常终止case导致的不良问题: 若BOOST\_REQUIRE抛出的异常被用户代码捕获, 则case不会终止而会继续执行, 这在相当大测程度上会导致整个测试被系统终止(比如访问无效内存)
+    \item 避免boost.test在BOOST\_REQUIRE中使用异常终止case导致的不良问题: \newline 若BOOST\_REQUIRE抛出的异常被用户代码捕获, 则case不会终止而会继续执行, 这在相当大程度上会导致整个测试被系统终止(比如访问无效内存).
     \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码
   \end{itemize}
   \item 在开发过程中通过测试工具对框架性能进行评估与反馈
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{ahttpd}}{}
+\datedsubsection{\textsc{ahttpd}}{时间待确定}
 \role{C++, asio}{个人开源项目}
 \begin{onehalfspacing}
 基于boost.asio实现的一套异步的网络框架
@@ -81,11 +78,11 @@ https://github.com/lucklove/ahttpd
 \begin{itemize}
   \item 实现了http server, http client, smtp client, fastcgi client
   \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免代码中出现同步的代码
-  \item 实现了一个线程池, 防止在必须存在同步代码时占用io\_service的线程从而导致服务器卡死, 以经可能达到高效
+  \item 实现了一个线程池, 防止在必须存在同步代码时占用io\_service的线程从而导致服务器卡死, 以尽可能达到高效
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{PM-Game-Server}}{}
+\datedsubsection{\textsc{PM-Game-Server}}{时间待确定}
 \role{C++, lua}{商业开源项目, 和Eric合作开发}
 \begin{onehalfspacing}
 微信游戏"口袋妖怪"服务端
@@ -97,7 +94,7 @@ https://github.com/lucklove/PM-Game-Server
 \end{itemize}
 \end{onehalfspacing}
 
-\datedsubsection{\textsc{nua}}{}
+\datedsubsection{\textsc{nua}}{时间待确定}
 \role{C++, header only}{商业开源项目}
 \begin{onehalfspacing}
 PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
@@ -105,7 +102,7 @@ PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
 https://github.com/lucklove/nua
 \begin{itemize}
   \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型至lua无法正确识别的bug.
-  \item 扩展了用户类型的接口, 允许用户自由选择传入value, reference, 还是const reference, 而不是限制用户只能使用lvalue的用户类型, 从而更好的支持了在lua中使用C++的多态(用户可以自主选择const和非const版本).
+  \item 扩展了用户类型的接口, 允许用户自由选择传入value, reference, 还是const reference, 而不是限制用户只能使用lvalue的用户类型, 从而在增加灵活性的同时更好的支持了在lua中使用C++的多态(用户可以自主选择const和非const版本).
 \end{itemize}
 \end{onehalfspacing}
 
@@ -145,8 +142,6 @@ hackshanghai是中国最大的大学生hackthon.
   \item GitHub: https://github.com/lucklove
   \item 语言: 英语 - 熟练(CET6)
 \end{itemize}
-
-\end{multicols} %双栏结束
 
 %% Reference
 %\newpage
