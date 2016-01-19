@@ -34,7 +34,7 @@ Github小窝: https://github.com/lucklove
 
 \section{\faGraduationCap 教育背景}
 \datedsubsection{\textbf{东北大学}, 沈阳}{2013 -- 至今}
-\textit{本科在读} 软件工程
+\textit{本科在读}\ 软件工程
 
 \section{\faStar 创业/项目经历}
 \datedsubsection{\textbf{智从科技有限公司} 沈阳}{2014年5月 -- 至今}
@@ -92,7 +92,7 @@ https://github.com/topcpporg/cinatra
 \newline
 https://github.com/lucklove/PM-Game-Server
 \begin{itemize}
-  \item 采用了mysql作永久储存, redis作缓存, 并实现了一个lock-free的数据库连接池, 提高运行时效率.
+  \item 采用了mysql作永久储存, redis作缓存, 并实现了一个lock-free的数据库连接池模板将与mysql和redis的连接池化, 提高运行时效率.
   \item 采用lua实现游戏的逻辑, 增强扩展性.
 \end{itemize}
 \end{onehalfspacing}
@@ -105,7 +105,7 @@ PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
 https://github.com/lucklove/nua
 \begin{itemize}
   \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型至lua无法正确识别的bug.
-  \item 扩展了用户类型的接口, 允许用户自由选择传入value, reference, 还是const reference, 而不是限制用户只能使用lvalue的用户类型, 从而在增加灵活性的同时更好的支持了在lua中使用C++的多态(用户可以自主选择const和非const版本).
+  \item 扩展了用户类型的接口, 使之更加灵活: 用户在使用用户类型时可自由选择是否使用引用以及是否使用const版本, 从而更好的支持了在lua中使用C++的多态.
 \end{itemize}
 \end{onehalfspacing}
 
