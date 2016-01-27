@@ -8,94 +8,103 @@
 \usepackage{linespacing_fix} % disable extra space before next section
 \usepackage{cite}
 \usepackage{ulem}
+\usepackage{arydshln}
 
-\setlength{\columnsep}{25pt} %设置左右栏间距
+\newcommand{\subsectionrule}{{\vspace{-8pt}\hspace{0.5cm}\rule[1pt]{\linewidth-1cm}{0.05pt}\vspace{-8pt}}}
 
 \begin{document}
 \pagenumbering{gobble} % suppress displaying page number
 
 \name{周帅}
-
-% {E-mail}{mobilephone}{homepage}
-% be careful of _ in emaill address
 \contactInfo{gnu.crazier@gmail.com}{(+86) 18202415073}{1041324091}
-% {E-mail}{mobilephone}
-% keep the last empty braces!
-%\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
 
 \section{\faUser 个人介绍}
-习性宅而不萌.
+开源软件运动的狂热支持者.
 \newline
-喜欢底层架构, 热爱高性能计算, 乐于压榨计算机, 知识储备偏向于后端与基础架构.
+喜欢底层架构, 崇尚简洁高效, 热爱高性能计算, 乐于压榨计算机, 知识储备偏向于后端与基础架构.
 \newline
 除计算机技术及相关外还喜涉猎社会百科.
-\newline
-Github小窝: https://github.com/lucklove
 
 \section{\faGraduationCap 教育背景}
-\datedsubsection{\textbf{东北大学}, 沈阳}{2013 -- 至今}
+\datedsubsection{\textbf{东北大学}\ 沈阳}{2013 -- 至今}
 \textit{本科在读}\ 软件工程
 
 \section{\faStar 创业/项目经历}
-\datedsubsection{\textbf{智从科技有限公司} 沈阳}{2014年5月 -- 至今}
+\datedsubsection{\textbf{智从科技有限公司}\ 沈阳}{2014年5月 -- 至今}
 \role{创业}{创始人: 王艺博}
 \begin{onehalfspacing}
-轻反馈(iFeedback)
+轻反馈(iFeedback).
+\newline
+轻反馈是一款学生成长分析产品, 通过轻反馈, 老师和家长可以随时沟通, 并且掌握学生成绩波动情况.
 \newline
 http://www.qingfankui.com/
 \begin{itemize}
-  \item 1.x: 轻反馈PC端安装包制作(安装, 升级, 卸载)
-  \item 2.x: 学生偏科度分析算法实现
+  \item 1.x: 轻反馈PC端安装包制作(安装, 升级, 卸载).
+  \item 2.x: 学生偏科度分析算法实现.
   \item 3.x:
   \begin{itemize} 
-    \item 题目的模糊搜索算法设计与实现 
-    \item 基于Angular.js实现部分页面逻辑
+    \item 题目的模糊搜索算法设计与实现.
+    \item 基于Angular.js实现部分页面逻辑.
   \end{itemize}
 \end{itemize}
 \end{onehalfspacing}
 
+\subsectionrule
+
 \datedsubsection{\textsc{ahttpd}}{2015年3月 -- 2015年7月}
 \role{C++, asio}{个人开源项目}
 \begin{onehalfspacing}
-基于boost.asio实现的一套异步的网络框架
+基于boost.asio实现的一套异步的网络框架.
 \newline
 https://github.com/lucklove/ahttpd
 \begin{itemize}
-  \item 实现了http server, http client, smtp client, fastcgi client
-  \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免代码中出现同步的代码
-  \item 实现了一个线程池, 防止在必须存在同步代码时占用io\_service的线程从而导致服务器卡死, 以尽可能达到高效
+  \item 实现了http server, http client, smtp client, fastcgi client.
+  \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免出现同步的代码或另开线程跑独立的io\_service.
+  \item 实现了一个线程池, 可供将IO密集型操作置于其中, 以避免阻塞工作线程.
 \end{itemize}
 \end{onehalfspacing}
 
+\subsectionrule
 
-\datedsubsection{\textsc{Cinatra}}{2015年6月 -- 至今}
+\datedsubsection{\textsc{Cinatra}}{2015年6月 -- 2015年9月}
 \role{C++, header only}{社区开源项目, 和江南还有往事如风等合作开发}
 \begin{onehalfspacing}
-一套header only的web框架 
+一套header only的web框架. 
 \newline
 https://github.com/topcpporg/cinatra
 \begin{itemize}
   \item 完成了mini单元测试框架的开发, 以之替代boost.test
   \begin{itemize}
-    \item 避免boost.test臃肿的问题: 只有一个头文件, 不足200行
-    \item 避免boost.test在BOOST\_REQUIRE中使用异常终止case导致的不良问题: \newline 若BOOST\_REQUIRE抛出的异常被用户代码捕获, 则case不会终止而会继续执行, 这在相当大程度上会导致整个测试被系统终止(比如访问无效内存).
-    \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码
+    \item 避免boost.test臃肿的问题: 只有一个头文件, 仅200行左右.
+    \item 在BOOST\_REQUIRE和BOOST\_CHECK的基础上进行了扩展:
+    \begin{itemize}
+        \item 支持在REQUIRE或CHECK失败时执行用户定义的行为.
+        \item REQUIRE失败时自动记住失败状态, 若REQUIRE抛出的异常被用户的代码捕获, 则在下一个检查点继续抛出, 保证只要只要REQUIRE失败, 后续检查点就不能再被执行流通过.
+    \end{itemize}
+    \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码.
   \end{itemize}
-  \item 在开发过程中通过测试工具对框架性能进行评估与反馈
+  \item 在开发过程中通过测试工具对框架性能进行评估与反馈.
 \end{itemize}
 \end{onehalfspacing}
+
+\subsectionrule
 
 \datedsubsection{\textsc{PM-Game-Server}}{2015年11月 -- 至今}
 \role{C++, lua}{商业开源项目, 和Eric合作开发}
 \begin{onehalfspacing}
-微信游戏"口袋妖怪"服务端
+微信游戏"口袋妖怪"服务端.
 \newline
 https://github.com/lucklove/PM-Game-Server
 \begin{itemize}
-  \item 采用了mysql作永久储存, redis作缓存, 并实现了一个lock-free的数据库连接池模板将与mysql和redis的连接池化, 提高运行时效率.
+  \item 实现了一个lock-free stack和lock-free queue.
+  \item 基于lock-free stack实现了nua::Context的无锁储存池.
+  \item 基于lock-free queue实现了线程池, 将所有可能阻塞的操作(如数据库访问等IO密集型操作)置于线程池中运行, 避免工作线程被阻塞.
+  \item 基于lock-free queue, lock-free stack和boost.coroutine实现了一个dispatcher, 通过dispatcher运行工作线程, 由于可能导致阻塞的操作都被置于线程池中, 工作线程只需询问操作是否完成, 若未完成就通过dispatcher将当前coroutine排队到队列末尾, 并重新选取可运行的coroutine运行, 从而保证在有任务的情况下工作线程绝不阻塞.
   \item 采用lua实现游戏的逻辑, 增强扩展性.
 \end{itemize}
 \end{onehalfspacing}
+
+\subsectionrule
 
 \datedsubsection{\textsc{nua}}{2015年12月}
 \role{C++, header only}{商业开源项目}
@@ -104,7 +113,7 @@ PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
 \newline
 https://github.com/lucklove/nua
 \begin{itemize}
-  \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型至lua无法正确识别的bug.
+  \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型导致lua无法正确识别的bug.
   \item 扩展了用户类型的接口, 使之更加灵活: 用户在使用用户类型时可自由选择是否使用引用以及是否使用const版本, 从而更好的支持了在lua中使用C++的多态.
 \end{itemize}
 \end{onehalfspacing}
@@ -123,7 +132,6 @@ https://github.com/lucklove/nua
   \item C++(熟练, since 2012)
   \item C(熟练, since 2011)
   \item Linux(熟练, since 2011)
-  \item 异步编程, 无锁编程
 \end{itemize}
 
 \section{\faHeartO 获奖情况}
@@ -133,11 +141,7 @@ https://github.com/lucklove/nua
 
 \section{\faUsers 活动经历}
 \datedsubsection{\textbf{hackshanghai} top9}{2015 年11月}
-hackshanghai是中国最大的大学生hackthon. 
-2015年11月7日, 我和两位同伴经过24小时奋战, 
-完成了一个mooc笔记插件
-(https://github.com/ele828/mooc-mate),
-我负责用cinatra进行服务端开发. 
+hackshanghai是中国最大的大学生hackthon. 2015年11月7日, 我和两位同伴经过24小时奋战, 完成了一个mooc笔记插件(https://github.com/ele828/mooc-mate),我负责用cinatra进行服务端开发. 
 
 \section{\faInfo 其他}
 % increase linespacing [parsep=0.5ex]
