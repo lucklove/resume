@@ -78,8 +78,8 @@ https://github.com/topcpporg/cinatra
     \item 避免boost.test臃肿的问题: 只有一个头文件, 仅200行左右.
     \item 在BOOST\_REQUIRE和BOOST\_CHECK的基础上进行了扩展:
     \begin{itemize}
-        \item 支持在REQUIRE或CHECK失败时执行用户定义的行为.
-        \item REQUIRE失败时自动记住失败状态, 若REQUIRE抛出的异常被用户的代码捕获, 则在下一个检查点继续抛出, 保证只要只要REQUIRE失败, 后续检查点就不能再被执行流通过.
+        \item 支持REQUIRE或CHECK失败时执行用户定义的行为.
+        \item 保证REQUIRE失败时执行流不能通过后续检查点, 而BOOST\_REQUIRE抛出的异常若被用户代码捕获则无法做次保证.
     \end{itemize}
     \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码.
   \end{itemize}
