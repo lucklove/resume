@@ -79,7 +79,7 @@ https://github.com/topcpporg/cinatra
     \item 在BOOST\_REQUIRE和BOOST\_CHECK的基础上进行了扩展:
     \begin{itemize}
         \item 支持REQUIRE或CHECK失败时执行用户定义的行为.
-        \item 保证REQUIRE失败时执行流不能通过后续检查点, 而BOOST\_REQUIRE抛出的异常若被用户代码捕获则无法做次保证.
+        \item 保证REQUIRE失败时执行流不能通过后续检查点, 而BOOST\_REQUIRE抛出的异常若被用户代码捕获则无法做此保证.
     \end{itemize}
     \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码.
   \end{itemize}
@@ -113,8 +113,8 @@ PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
 \newline
 https://github.com/lucklove/nua
 \begin{itemize}
-  \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型导致lua无法正确识别的bug.
-  \item 扩展了用户类型的接口, 使之更加灵活: 用户在使用用户类型时可自由选择是否使用引用以及是否使用const版本, 从而更好的支持了在lua中使用C++的多态.
+  \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型导致lua无法正确识别的bug(https://github.com/jeremyong/Selene/issues/140).
+  \item 扩展了用户类型的接口, 使之更加灵活: 用户在向lua传递用户类型时可自由选择是否使用引用以及是否使用const版本引用.
 \end{itemize}
 \end{onehalfspacing}
 
