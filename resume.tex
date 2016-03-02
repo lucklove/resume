@@ -2,7 +2,7 @@
 % !TEX encoding = UTF-8 Unicode
 % !Mode:: "TeX:UTF-8"
 
-\documentclass{resume}
+\documentclass[UTF8]{resume}
 \usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
 %\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
 \usepackage{linespacing_fix} % disable extra space before next section
@@ -24,30 +24,35 @@
 喜欢底层架构, 崇尚简洁高效, 热爱高性能计算, 乐于压榨计算机, 知识储备偏向于后端与基础架构.
 \newline
 除计算机技术及相关外还喜涉猎社会百科.
+\newline
+github小窝: https://github.com/lucklove
 
 \section{\faGraduationCap 教育背景}
 \datedsubsection{\textbf{东北大学}\ 沈阳}{2013 -- 至今}
 \textit{本科在读}\ 软件工程
 
-\section{\faStar 创业/项目经历}
-\datedsubsection{\textbf{智从科技有限公司}\ 沈阳}{2014年5月 -- 至今}
-\role{创业}{创始人: 王艺博}
-\begin{onehalfspacing}
-轻反馈(iFeedback).
-\newline
-轻反馈是一款学生成长分析产品, 通过轻反馈, 老师和家长可以随时沟通, 并且掌握学生成绩波动情况.
-\newline
-http://www.qingfankui.com/
+\section{\faStar 实习/项目经历}
+\datedsubsection{\textbf{阿里巴巴}\ 杭州}{2016年6月 -- 至今}
+\role{实习}{基础架构事业群-大数据\&CDN-自动化开发}
+\datedsubsection{\textsc{redcoast}}{}
+\role{go}{分布式日志分析平台}
 \begin{itemize}
-  \item 1.x: 轻反馈PC端安装包制作(安装, 升级, 卸载).
-  \item 2.x: 学生偏科度分析算法实现.
-  \item 3.x:
-  \begin{itemize} 
-    \item 题目的模糊搜索算法设计与实现.
-    \item 基于Angular.js实现部分页面逻辑.
+  \item 稳定性:
+  \begin{itemize}
+    \item 用户插件异常主动报警机制
+    \item 优化内存, 解决OOM的问题, 生产环境内存占用量由37G降至3G
+  \end{itemize}
+  \item 易用性:
+  \begin{itemize}
+    \item 提供open api, 让用户可以通过AK访问红岸api
   \end{itemize}
 \end{itemize}
-\end{onehalfspacing}
+\datedsubsection{\textsc{tesla}}{}
+\role{python}{运维自动化平台}
+\begin{itemize}
+  \item 业务线-用户组关系重构, 由一对一改为多对多关系
+  \item 配置/工作流跨业务线共享
+\end{itemize}
 
 \subsectionrule
 
@@ -56,7 +61,7 @@ http://www.qingfankui.com/
 \begin{onehalfspacing}
 基于boost.asio实现的一套异步的网络框架.
 \newline
-https://github.com/lucklove/ahttpd
+https://github.com/topcpporg/cinatra
 \begin{itemize}
   \item 实现了http server, http client, smtp client, fastcgi client.
   \item 允许http server暴露io\_service给http client, smtp client或fastcgi client使用, 这样可以做到所有的子模块使用同一个io\_service从而尽量避免出现同步的代码或另开线程跑独立的io\_service.
@@ -76,12 +81,12 @@ https://github.com/topcpporg/cinatra
   \item 完成了mini单元测试框架的开发, 以之替代boost.test
   \begin{itemize}
     \item 避免boost.test臃肿的问题: 只有一个头文件, 仅200行左右.
-    \item 在BOOST\_REQUIRE和BOOST\_CHECK的基础上进行了扩展:
+    \item 在BOOST\_REQUIRE和BOOST\_CHECK的基础上进行了扩展: 
     \begin{itemize}
         \item 支持REQUIRE或CHECK失败时执行用户定义的行为.
         \item 保证REQUIRE失败时执行流不能通过后续检查点, 而BOOST\_REQUIRE抛出的异常若被用户代码捕获则无法做此保证.
     \end{itemize}
-    \item 满足"好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码.
+    \item "好莱坞原则": 每个测试用例不用关心自己会在哪里被调用, 添加测试用例也无需改动任何已有代码.
   \end{itemize}
   \item 在开发过程中通过测试工具对框架性能进行评估与反馈.
 \end{itemize}
@@ -89,7 +94,7 @@ https://github.com/topcpporg/cinatra
 
 \subsectionrule
 
-\datedsubsection{\textsc{PM-Game-Server}}{2015年11月 -- 至今}
+\datedsubsection{\textsc{PM-Game-Server}}{2015年11月 -- 2016年2月}
 \role{C++, lua}{商业开源项目, 和Eric合作开发}
 \begin{onehalfspacing}
 微信游戏"口袋妖怪"服务端.
@@ -99,7 +104,7 @@ https://github.com/lucklove/PM-Game-Server
   \item 实现了一个lock-free stack和lock-free queue.
   \item 基于lock-free stack实现了nua::Context的无锁储存池.
   \item 基于lock-free queue实现了线程池, 将所有可能阻塞的操作(如数据库访问等IO密集型操作)置于线程池中运行, 避免工作线程被阻塞.
-  \item 基于lock-free queue, lock-free stack和boost.coroutine实现了一个dispatcher, 通过dispatcher运行工作线程, 由于可能导致阻塞的操作都被置于线程池中, 工作线程只需询问操作是否完成, 若未完成就通过dispatcher将当前coroutine排队到队列末尾, 并重新选取可运行的coroutine运行, 从而保证在有任务的情况下工作线程绝不阻塞.
+  \item 基于lock-free queue, lock-free stack和boost.coroutine实现了一个dispatcher, 通过dispatcher调度任务.
   \item 采用lua实现游戏的逻辑, 增强扩展性.
 \end{itemize}
 \end{onehalfspacing}
@@ -113,7 +118,7 @@ PM-Game-Server的lua交互库, 由开源项目Selene改进而来.
 \newline
 https://github.com/lucklove/nua
 \begin{itemize}
-  \item 修复Selene采用light user data实现用户类型而导致的同时传入多个用户类型导致lua无法正确识别的bug(https://github.com/jeremyong/Selene/issues/140).
+  \item 修复了Selene的bug(https://github.com/jeremyong/Selene/issues/140).
   \item 扩展了用户类型的接口, 使之更加灵活: 用户在向lua传递用户类型时可自由选择是否使用引用以及是否使用const版本引用.
 \end{itemize}
 \end{onehalfspacing}
